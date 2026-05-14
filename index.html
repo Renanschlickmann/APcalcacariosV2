@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ApCalcários</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+<header>
+    <div class="logo-area">
+        <img src="logo.png" alt="Logo da Empresa">
+    </div>
+
+    <h1>ApCalcários</h1>
+    <p>Entrada • Saída • Estoque • Serviços</p>
+</header>
+
+<main>
+
+    <section class="card">
+        <h2>Entrada de Calcário</h2>
+
+        <form id="formEntrada">
+            <input type="text" id="entradaNome" placeholder="Nome / Data" required>
+
+            <select id="entradaTipo">
+                <option value="branco">Calcário Branco</option>
+                <option value="preto">Calcário Preto</option>
+            </select>
+
+            <input type="number" step="any" id="entradaQuantidade" placeholder="Quantidade (Toneladas)" required>
+
+            <input type="text" id="entradaValor" placeholder="Valor da Compra (R$)">
+
+            <button type="submit">Salvar Entrada</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Saída de Calcário</h2>
+
+        <form id="formSaida">
+            <input type="text" id="saidaNome" placeholder="Nome do Produtor" required>
+
+            <select id="saidaTipo">
+                <option value="branco">Calcário Branco</option>
+                <option value="preto">Calcário Preto</option>
+            </select>
+
+            <input type="number" step="any" id="saidaQuantidade" placeholder="Quantidade (Toneladas)" required>
+
+            <input type="text" id="saidaValor" placeholder="Valor da Venda (R$)">
+
+            <button type="submit">Salvar Saída</button>
+        </form>
+    </section>
+
+    <section class="card estoque">
+        <h2>Estoque Atual</h2>
+
+        <div class="estoque-box">
+            <div>
+                <h3>Calcário Branco</h3>
+                <p id="estoqueBranco">0 Ton</p>
+            </div>
+
+            <div>
+                <h3>Calcário Preto</h3>
+                <p id="estoquePreto">0 Ton</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Serviços</h2>
+
+        <form id="formServico">
+            <input type="text" id="servicoNome" placeholder="Nome do Cliente" required>
+
+            <select id="servicoTipo">
+                <option value="Aplicação por Alqueire">Aplicação por Alqueire</option>
+                <option value="Aplicação por Tonelada">Aplicação por Tonelada</option>
+            </select>
+
+            <input type="number" step="any" id="servicoQuantidade" placeholder="Quantidade" required>
+
+            <input type="text" id="servicoValor" placeholder="Valor (Opcional)">
+
+            <button type="submit">Salvar Serviço</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Movimentações</h2>
+
+        <p class="dica-editar">
+    
+        </p>
+
+        <div class="listas">
+            <div>
+                <h3>Entradas</h3>
+                <ul id="listaEntradas"></ul>
+            </div>
+
+            <div>
+                <h3>Saídas</h3>
+                <ul id="listaSaidas"></ul>
+            </div>
+
+            <div>
+                <h3>Serviços</h3>
+                <ul id="listaServicos"></ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Backup do Sistema</h2>
+
+        <p class="backup-alerta">
+            ⚠️ Importante: salve um Backup a cada 5 dias para evitar perda de dados.
+        </p>
+
+        <div class="backup-botoes">
+            <button type="button" id="btnBackup">Salvar Backup</button>
+
+            <label for="inputImportar" class="btn-importar">
+                Importar Backup
+            </label>
+
+            <button type="button" id="btnExcel">
+                Exportar Excel
+            </button>
+
+            <input type="file" id="inputImportar" accept=".json">
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 - feito por -Renan Schlickmann Gesser- tel (46) 933004345</p>
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js");
+}
+</script>
+
+</body>
+</html>
