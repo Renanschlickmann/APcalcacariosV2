@@ -20,6 +20,18 @@ header {
     margin-bottom: 20px;
 }
 
+.logo-area {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.logo-area img {
+    width: 120px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
 header h1 {
     font-size: 28px;
 }
@@ -33,9 +45,9 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}                         
+}
+
 .card {
-                       
     background: white;
     padding: 18px;
     border-radius: 15px;
@@ -98,12 +110,6 @@ button:hover {
     font-weight: bold;
 }
 
-.listas {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
 ul {
     list-style: none;
 }
@@ -114,19 +120,6 @@ li {
     border-radius: 10px;
     margin-bottom: 10px;
     font-size: 15px;
-}
-
-
-@media (min-width: 768px) {
-
-    .listas {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    main {
-        max-width: 1200px;
-        margin: auto;
-    }
 }
 
 .backup-alerta {
@@ -163,28 +156,6 @@ li {
     display: none;
 }
 
-.item-linha {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-}
-
-.btn-excluir {
-    background: #ff5e00;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.btn-excluir:hover {
-    background: #b91c1c;
-}
-
-
 #btnExcel {
     width: 100%;
     background: #2563eb;
@@ -195,18 +166,129 @@ li {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
 }
 
 #btnExcel:hover {
     background: #1d4ed8;
 }
 
+.dica-editar {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
 
-footer {
-  text-align: center;
-    margin-top: 30px;
+#btnAbrirExtrato {
+    width: 100%;
+    background: #0f172a;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
+#btnAbrirExtrato:hover {
+    background: #1e293b;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+}
+
+.modal.ativo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-conteudo {
+    background: white;
+    width: 100%;
+    max-width: 1100px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.modal-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#btnFecharExtrato {
+    background: #dc2626;
+    color: white;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.abas-extrato {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.aba {
+    flex: 1;
+    background: #e5e7eb;
+    color: #111827;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.aba:hover {
+    background: #d1d5db;
+}
+
+.aba.ativa {
+    background: #1e3b20;
+    color: white;
+}
+
+.conteudo-aba {
+    display: none;
+}
+
+.conteudo-aba.ativo {
+    display: block;
+}
+
+.conteudo-aba h3 {
+    margin-bottom: 12px;
+    color: #0f172a;
+}
+
+.item-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.item-linha > div:first-child {
+    flex: 1;
 }
 
 .botoes-item {
@@ -223,8 +305,106 @@ footer {
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 14px;
 }
 
 .btn-editar:hover {
     background: #d97706;
+}
+
+.btn-excluir {
+    background: #ff5e00;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn-excluir:hover {
+    background: #b91c1c;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+@media (min-width: 768px) {
+    main {
+        max-width: 1200px;
+        margin: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .item-linha {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .botoes-item {
+        width: 100%;
+    }
+
+    .btn-editar,
+    .btn-excluir {
+        flex: 1;
+    }
+
+    .abas-extrato {
+        flex-direction: column;
+    }
+}
+
+#btnImprimirExtrato {
+    width: 100%;
+    background: #374151;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+#btnImprimirExtrato:hover {
+    background: #111827;
+}
+
+.resumo-totais {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.resumo-totais div {
+    background: #f1f5f9;
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+
+.resumo-totais h4 {
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 6px;
+}
+
+.resumo-totais p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1e3b20;
+}
+
+@media (min-width: 768px) {
+    .resumo-totais {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
