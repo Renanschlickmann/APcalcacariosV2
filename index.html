@@ -95,28 +95,15 @@
     </section>
 
     <section class="card">
-        <h2>Movimentações</h2>
+        <h2>Extrato de Movimentações</h2>
 
         <p class="dica-editar">
-    
+            Abra o extrato para ver, editar ou apagar lançamentos.
         </p>
 
-        <div class="listas">
-            <div>
-                <h3>Entradas</h3>
-                <ul id="listaEntradas"></ul>
-            </div>
-
-            <div>
-                <h3>Saídas</h3>
-                <ul id="listaSaidas"></ul>
-            </div>
-
-            <div>
-                <h3>Serviços</h3>
-                <ul id="listaServicos"></ul>
-            </div>
-        </div>
+        <button type="button" id="btnAbrirExtrato">
+            📋 Abrir Extrato
+        </button>
     </section>
 
     <section class="card">
@@ -142,6 +129,85 @@
     </section>
 
 </main>
+
+<div id="modalExtrato" class="modal">
+    <div class="modal-conteudo">
+
+        <div class="modal-topo">
+            <h2>Extrato Completo</h2>
+
+            <button type="button" id="btnFecharExtrato">
+                ✕
+            </button>
+        </div>
+
+        <div class="abas-extrato">
+            <button type="button" class="aba ativa" onclick="mostrarAba('entradas')">
+                Entradas
+            </button>
+
+            <button type="button" class="aba" onclick="mostrarAba('saidas')">
+                Saídas
+            </button>
+
+            <button type="button" class="aba" onclick="mostrarAba('servicos')">
+                Serviços
+            </button>
+        </div>
+
+        <button type="button" id="btnImprimirExtrato">
+    🖨 Imprimir / PDF
+</button>
+
+<div class="resumo-totais">
+    <div>
+        <h4>Total Entradas</h4>
+        <p id="totalEntradas">0 Ton</p>
+    </div>
+
+    <div>
+        <h4>Total Saídas</h4>
+        <p id="totalSaidas">0 Ton</p>
+    </div>
+
+    <div>
+        <h4>Total Serviços</h4>
+        <p id="totalServicos">0</p>
+    </div>
+
+    <div>
+        <h4>Total Compras</h4>
+        <p id="totalCompras">R$ 0</p>
+    </div>
+
+    <div>
+        <h4>Total Vendas</h4>
+        <p id="totalVendas">R$ 0</p>
+    </div>
+
+    <div>
+        <h4>Total Serviços R$</h4>
+        <p id="totalValorServicos">R$ 0</p>
+    </div>
+</div>
+
+        <div id="abaEntradas" class="conteudo-aba ativo">
+            <h3>Entradas</h3>
+            <ul id="listaEntradas"></ul>
+        </div>
+
+        <div id="abaSaidas" class="conteudo-aba">
+            <h3>Saídas</h3>
+            <ul id="listaSaidas"></ul>
+        </div>
+
+        <div id="abaServicos" class="conteudo-aba">
+            <h3>Serviços</h3>
+            <ul id="listaServicos"></ul>
+        </div>
+
+    </div>
+</div>
 
 <footer>
     <p>© 2026 - feito por -Renan Schlickmann Gesser- tel (46) 933004345</p>
